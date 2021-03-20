@@ -5,6 +5,8 @@ import { AgGridReact } from "ag-grid-react";
 
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
+import Button from "@material-ui/core/Button";
+import { TextField } from "@material-ui/core";
 export default function Todolist() {
   const [todo, setTodo] = useState({ description: "", date: "", priority: "" });
   const [todos, setTodos] = useState([]);
@@ -17,6 +19,7 @@ export default function Todolist() {
 
   const addTodo = () => {
     setTodos([...todos, todo]);
+    setTodo({ description: "", date: "", priority: "" });
   };
 
   const deleteTodo = () => {
@@ -37,6 +40,7 @@ export default function Todolist() {
       sortable: true,
       filter: true,
       floatingFilter: true,
+      animateRows: true,
     },
     {
       headername: "Date",
@@ -59,29 +63,48 @@ export default function Todolist() {
 
   return (
     <div style={{ width: "50%", height: "700px", margin: "auto" }}>
-      <input
-        type="text"
-        onChange={inputChanged}
-        placeholder="Description"
-        name="description"
-        value={todo.description}
-      />
-      <input
-        type="date"
-        onChange={inputChanged}
-        placeholder="Date"
-        name="date"
-        value={todo.date}
-      />
-      <input
-        type="text"
-        onChange={inputChanged}
-        placeholder="Priority"
-        name="priority"
-        value={todo.priority}
-      />
-      <button onClick={addTodo}>Add</button>
-      <button onClick={deleteTodo}>Delete</button>
+      <div>
+        <TextField
+          style={{ marginRight: 10 }}
+          type="text"
+          onChange={inputChanged}
+          label="Description"
+          name="description"
+          value={todo.description}
+        />
+        <TextField
+          style={{ marginRight: 10 }}
+          type=""
+          onChange={inputChanged}
+          label="Description"
+          name=""
+          value={todo.date}
+        />
+        <TextField
+          style={{ marginRight: 10 }}
+          type="text"
+          onChange={inputChanged}
+          label="Priority"
+          name="priority"
+          value={todo.priority}
+        />
+        <Button
+          style={{ marginRight: 10 }}
+          onClick={addTodo}
+          variant="contained"
+          color="primary"
+        >
+          Add
+        </Button>
+        <Button
+          style={{ marginRight: 10 }}
+          onClick={deleteTodo}
+          variant="contained"
+          color="Secondary"
+        >
+          Delete
+        </Button>
+      </div>
       <div
         className="ag-theme-material"
         style={{ width: "80%", height: "700px", margin: "auto" }}
@@ -93,7 +116,6 @@ export default function Todolist() {
           columnDefs={columns}
           rowData={todos}
           animateRows="true"
-          rowHeight="50 px"
         />
       </div>
     </div>
