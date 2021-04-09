@@ -74,10 +74,10 @@ export default function Todolist() {
         />
         <TextField
           style={{ marginRight: 10 }}
-          type=""
+          type="Date"
           onChange={inputChanged}
-          label="Description"
-          name=""
+          label=" "
+          name="date"
           value={todo.date}
         />
         <TextField

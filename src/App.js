@@ -11,9 +11,13 @@ function showList() {
         <h1 className="App-header">This is react-router:</h1>
       </div>
       <BrowserRouter>
-        <div>
-          <Link to="/">Home</Link>
-          <Link to="/Todolist">To-do list</Link>
+        <div style={{ marginRight: 10 }}>
+          <Link to="/" style={{ marginRight: 10 }}>
+            Home
+          </Link>
+          <Link to="/Todolist" style={{ marginRight: 10 }}>
+            To-do list
+          </Link>
 
           <Switch>
             <Route exact path="/" component={home} />
